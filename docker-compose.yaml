@@ -7,23 +7,19 @@ services:
             args:
                 - USER=${USER}
         volumes:
-            - ./ansible-control-node/ansible/inventory:/etc/ansible/hosts
-            - ./ansible-control-node/ansible/playbooks/:/etc/ansible/
+            - ./control-node/ansible/:/etc/ansible/
             - persist_home:/home/${USER}
         environment:
             - USER=${USER}
         ports:
             - "2222:22"
 
-    host-base: &base
+    host-1: &base
         build:
             dockerfile: Dockerfile    
-            context: ansible-regular-node
+            context: regular-node
             args:
                 - USER=${USER}
-    
-    host-1: 
-        <<: *base
 
     host-2: 
         <<: *base
