@@ -1,6 +1,7 @@
 services:
     ansible:
         container_name: control
+        hostname: control-node
         build:
             dockerfile: Dockerfile    
             context: ansible-control-node
@@ -16,6 +17,7 @@ services:
             - "2222:22"
 
     host-1: &base
+        hostname: host-1
         build:
             dockerfile: Dockerfile    
             context: regular-node
@@ -23,9 +25,11 @@ services:
                 - USER=${USER}
 
     host-2: 
+        hostname: host-2
         <<: *base
 
     host-3: 
+        hostname: host-3
         <<: *base
 
 
