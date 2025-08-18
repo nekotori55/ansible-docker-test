@@ -1,0 +1,11 @@
+group:
+    hosts:
+        host1:
+            ansible_host: host-1
+        host2:
+            ansible_host: host-2
+
+group2:
+    hosts:
+        host3:
+            ansible_host: host-3
