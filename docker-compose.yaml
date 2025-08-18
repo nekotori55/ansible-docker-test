@@ -7,8 +7,8 @@ services:
             args:
                 - USER=${USER}
         volumes:
-            - ansible_config:/etc/ansible/
-            - ansible_playbooks:/home/${USER}/playbooks/
+            - ./control-node/ansible:/etc/ansible/
+            - ./control-node/playbooks:/home/${USER}/playbooks/
             - persist_home:/home/${USER}
         environment:
             - USER=${USER}
@@ -37,18 +37,3 @@ networks:
 volumes:
     persist_home:
         external: false
-    
-    ansible_playbooks:
-        driver: local
-        driver_opts:
-            type: none
-            o: bind
-            device: ./control-node/playbooks/
-
-    ansible_config:
-        driver: local
-        driver_opts:
-            type: none
-            o: bind
-            device: ./control-node/ansible
-    
