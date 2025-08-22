@@ -1,0 +1,5 @@
+---
+- name: i installed nginx file
+  copy:
+    content: "NGINX is installed and I don't have systemd to autostart it"
+    dest: "/amoga.txt"

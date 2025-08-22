@@ -1,0 +1,17 @@
+---
+- hosts: nginx-hosts
+  become:
+    true
+  become_method:
+    sudo
+  become_user:
+    root
+  remote_user:
+    "{{ lookup('ansible.builtin.env', 'USER') }}"
+  roles:
+    - nginx
+  vars:
+    nginx_user: www-data
+    worker_connections: 128
+    worker_processes: 2
+    doc_root: /var/www

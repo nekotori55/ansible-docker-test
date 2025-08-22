@@ -1,0 +1,29 @@
+---
+- name: install nginx
+  apt:
+    name=nginx
+    state=latest
+  notify:
+    - i installed nginx file
+
+# - name: Delete default template page
+#     file:
+#       path: /var/www/html/index.html
+#       state: absent
+
+- name: Replace default template page
+  template:
+    src=templates/nginx.html
+    dest=/var/www/index.html
+
+- name: Replace nginx.conf
+  template:
+    src=templates/nginx.conf
+    dest=/etc/nginx/nginx.conf
+
+- name: kill nginx if exist
+  command: pkill nginx
+  ignore_errors: yes
+
+- name: start nginx 
+  command: nohup nginx

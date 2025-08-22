@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu 
 
 ARG USER=${USER}
 
@@ -8,7 +8,7 @@ RUN apt update && apt install openssh-server sudo  -y
 
 # Setup running user on the container with sudo rights and
 # password-less ssh login
-RUN useradd -m ${USER}
+RUN useradd -m ${USER} 
 RUN adduser ${USER} sudo
 RUN echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudoers
 RUN chsh ${USER} -s /bin/bash
@@ -35,7 +35,6 @@ RUN service ssh start
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
-
 
 ##################################################################
 

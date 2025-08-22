@@ -1,11 +1,11 @@
-group:
+nginx-hosts:
     hosts:
         host1:
             ansible_host: host-1
         host2:
             ansible_host: host-2
 
-group2:
+not-nginx-hosts:
     hosts:
         host3:
             ansible_host: host-3

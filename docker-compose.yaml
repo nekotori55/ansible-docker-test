@@ -4,7 +4,7 @@ services:
         hostname: control-node
         build:
             dockerfile: Dockerfile    
-            context: ansible-control-node
+            context: control-node
             args:
                 - USER=${USER}
         volumes:
@@ -18,6 +18,8 @@ services:
 
     host-1: &base
         hostname: host-1
+        ports: 
+            - "80"
         build:
             dockerfile: Dockerfile    
             context: regular-node
